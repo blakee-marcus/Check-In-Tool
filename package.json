@@ -1,0 +1,33 @@
+{
+  "name": "check-in-tool",
+  "version": "1.0.0",
+  "description": "React/GraphQL Based App to help manage queues for check in desks",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blakee-marcus/Check-In-Tool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blakee-marcus/Check-In-Tool/issues"
+  },
+  "homepage": "https://github.com/blakee-marcus/Check-In-Tool#readme",
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0"
+  }
+}
