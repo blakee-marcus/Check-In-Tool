@@ -37,13 +37,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('followingCount').get(function () {
-  return this.following.length;
-});
-userSchema.virtual('followersCount').get(function () {
-  return this.followers.length;
-});
-
 const User = model('User', userSchema);
 
 module.exports = User;

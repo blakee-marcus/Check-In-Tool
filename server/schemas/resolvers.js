@@ -58,9 +58,9 @@ const resolvers = {
         await Day.findOneAndUpdate(
           { date: checkInDateOnly },
           { $addToSet: { customers: customer._id } },
-          { upsert: true }
+          { upsert: true },
         );
-        console.log(customer);
+
         return customer;
       }
 
@@ -72,7 +72,7 @@ const resolvers = {
         const customer = await Customer.findOneAndUpdate(
           { _id: args.customerId },
           { name: args.name, status: args.status },
-          { new: true }
+          { new: true },
         );
 
         return customer;
@@ -87,7 +87,7 @@ const resolvers = {
 
         await Day.findOneAndUpdate(
           { date: customer.checkInTime },
-          { $pull: { customers: customer._id } }
+          { $pull: { customers: customer._id } },
         );
 
         return customer;
@@ -95,9 +95,8 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    login: async (_, { email, password }) => {
-      const user = await User.findOne({ email });
-
+    login: async (_, { username, password }) => {
+      const user = await User.findOne({ username });
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
@@ -118,16 +117,17 @@ const resolvers = {
       return { token, user };
     },
 
-    updateUser: async (_, { username, email, password }, context) => {
-      if (context.user.username === username) {
-        const user = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { username, email, password },
-          { new: true }
-        );
-        return user;
+    updateUser: async (_, { username, password }) => {
+      const user = await User.findOne({ username });
+      if (!user) {
+        throw new Error('No user found with this email address.');
       }
-      throw new AuthenticationError('Incorrect Credentials');
+
+      user.password = password;
+
+      await user.save();
+
+      return user;
     },
 
     removeUser: async (_, { username }, context) => {
@@ -135,10 +135,9 @@ const resolvers = {
         const user = await User.findOneAndDelete({ _id: context.user._id });
         return user;
       }
-      throw new AuthenticationError('Incorrect Credentials');
+      throw new AuthenticationError('Not Logged In');
     },
   },
 };
 
 module.exports = resolvers;
-

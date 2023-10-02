@@ -37,10 +37,10 @@ const typeDefs = gql`
     ): Customer!
     updateCustomer(customerId: ID!, name: String, status: String!): Customer!
     removeCustomer(customerId: ID!): Customer!
-    login(email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     addUser(username: String!, password: String!): Auth
-    updateUser(username: String!, email: String!, password: String): User!
-    removeUser(userId: ID!): User!
+    updateUser(username: String!, password: String!): User!
+    removeUser(username: ID!): User!
   }
 `;
 
