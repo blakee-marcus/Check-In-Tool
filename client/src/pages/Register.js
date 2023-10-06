@@ -118,6 +118,11 @@ const Register = () => {
           {errorMessage}
         </p>
       )}
+      {errorMessage && (
+        <p className='w-80 mx-auto flex-column justify-center text-error'>
+          {errorMessage}
+        </p>
+      )}
     </section>
   );
 };
