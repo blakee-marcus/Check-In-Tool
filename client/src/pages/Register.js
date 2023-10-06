@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_USER } from '../utils/mutations';
@@ -13,7 +13,6 @@ const Register = () => {
     Password: '',
     'Confirm Password': '',
   });
-  const navigate = useNavigate();
 
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -53,7 +52,7 @@ const Register = () => {
       });
 
       Auth.login(data.addUser.token);
-      navigate('/checkin');
+      window.location.replace('/checkin');
     } catch (e) {
       if (e.message.includes('username_1 dup key')) {
         setErrorMessage(

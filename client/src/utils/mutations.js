@@ -18,15 +18,23 @@ export const UPDATE_CUSTOMER = gql`
 
 export const ADD_CUSTOMER = gql`
   mutation AddCustomer($name: String!) {
-  addCustomer(name: $name) {
-    _id
-    name
-    checkInTime
-    fromUser {
+    addCustomer(name: $name) {
       _id
-      username
+      name
+      checkInTime
+      fromUser {
+        _id
+        username
+      }
+      status
     }
-    status
   }
-}
+`;
+
+export const LOGIN = gql`
+  mutation Login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      token
+    }
+  }
 `;

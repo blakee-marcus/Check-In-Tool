@@ -24,7 +24,7 @@ const Home = () => {
         Check In
       </div>
       <div className='flex-column flex-center h-50'>
-        <Link to='/signin' className='w-80 btn-primary py-1 mb-1'>
+        <Link to='/login' className='w-80 btn-primary py-1 mb-1'>
           <div className='flex-center'>
             <span className='flex-row flex-center'>Sign In</span>
           </div>
