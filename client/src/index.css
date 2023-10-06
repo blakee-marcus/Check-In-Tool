@@ -2,6 +2,7 @@
   --primary: hsl(224, 73%, 56%);
   --secondary: hsl(0, 0%, 96%);
   --dark: hsl(220, 4%, 13%);
+  --error: hsl(0, 100%, 58%);
   --text-primary: hsl(240, 15%, 94%);
   --text-dark: hsl(220, 16%, 11%);
   --text-primary-size: 0.87rem;
@@ -58,6 +59,9 @@ h2, h3 {
 li {
   color: var(--text-dark);
   font-size: var(--text-primary-size);
+}
+.text-error {
+  color: var(--error);
 }
 .btn-primary {
   background-color: var(--primary);
