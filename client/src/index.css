@@ -1,8 +1,15 @@
 :root {
   --primary: hsl(224, 73%, 56%);
   --secondary: hsl(0, 0%, 96%);
+  --gray: hsla(0, 1%, 78%, 0.762);
   --dark: hsl(220, 4%, 13%);
   --error: hsl(0, 100%, 58%);
+  --waiting: hsl(357, 100%, 57%);
+  --waiting-background: hsla(357, 100%, 57%, 0.2);
+  --assisting: hsl(43, 100%, 58%);
+  --assisting-background: hsla(43, 100%, 58%, 0.2);
+  --assisted: hsl(154, 59%, 51%);
+  --assisted-background: hsla(154, 59%, 51%, 0.2);
   --text-primary: hsl(240, 15%, 94%);
   --text-dark: hsl(220, 16%, 11%);
   --text-primary-size: 0.87rem;
@@ -12,6 +19,10 @@
   --spacing-three: 1rem;
   --spacing-four: calc(1rem * 1.5);
   --spacing-five: calc(1rem * 3);
+}
+header {
+  background-color: var(--dark);
+  color: var(--text-primary);
 }
 a {
   color: inherit;
@@ -48,20 +59,64 @@ label {
   font-weight: 400;
   font-size: 0.85rem;
 }
-
+select,
+option {
+  font-size: var(--text-primary-size);
+  border: none;
+  background-color: hsla(0, 0%, 100%, 0.135);
+}
 h1 {
   font-size: 1.3rem;
   font-weight: 500;
 }
-h2, h3 {
+h2,
+h3 {
   color: var(--text-dark);
 }
 li {
   color: var(--text-dark);
   font-size: var(--text-primary-size);
 }
+.z-index-important {
+  z-index: 100;
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.header-secondary {
+  font-size: 1.1rem;
+  font-weight: 400;
+  background-color: var(--gray);
+}
+.text-primary {
+  color: var(--text-primary);
+}
+.text-waiting {
+  color: var(--waiting);
+}
+.text-assisting {
+  color: var(--assisting);
+}
+.text-assisted {
+  color: var(--assisted);
+}
 .text-error {
   color: var(--error);
+}
+.background-waiting {
+  background-color: var(--waiting-background);
+  border-left: 0.125rem solid var(--waiting);
+}
+.background-assisting {
+  background-color: var(--assisting-background);
+  border-left: 0.125rem solid var(--assisting);
+}
+.background-assisted {
+  background-color: var(--assisted-background);
+  border-left: 0.125rem solid var(--assisted);
 }
 .btn-primary {
   background-color: var(--primary);
@@ -78,6 +133,10 @@ li {
 .dark {
   background-color: var(--dark);
   color: var(--text-primary);
+}
+
+.justify-space-between {
+  justify-content: space-between;
 }
 
 .vw-100 {
@@ -272,6 +331,35 @@ li {
   margin-right: auto;
   margin-left: auto;
 }
+
+.p-0 {
+  padding: 0;
+}
+
+.p-1 {
+  padding: var(--spacing-one);
+}
+
+.p-2 {
+  padding: var(--spacing-two);
+}
+
+.p-3 {
+  padding: var(--spacing-three);
+}
+
+.p-4 {
+  padding: var(--spacing-four);
+}
+
+.p-5 {
+  padding: var(--spacing-five);
+}
+
+.p-auto {
+  padding: auto;
+}
+
 /* Padding - y axis */
 
 .py-0 {
@@ -307,5 +395,72 @@ li {
 .py-auto {
   padding-top: auto;
   padding-bottom: auto;
+}
+
+/* padding - x axis */
+
+.px-0 {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.px-1 {
+  padding-right: var(--spacing-one);
+  padding-left: var(--spacing-one);
+}
+
+.px-2 {
+  padding-right: var(--spacing-two);
+  padding-left: var(--spacing-two);
+}
+
+.px-3 {
+  padding-right: var(--spacing-three);
+  padding-left: var(--spacing-three);
+}
+
+.px-4 {
+  padding-right: var(--spacing-four);
+  padding-left: var(--spacing-four);
+}
+
+.px-5 {
+  padding-right: var(--spacing-five);
+  padding-left: var(--spacing-five);
+}
+
+.px-auto {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+/* padding-left */
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.pl-1 {
+  padding-left: var(--spacing-one);
+}
+
+.pl-2 {
+  padding-left: var(--spacing-two);
+}
+
+.pl-3 {
+  padding-left: var(--spacing-three);
+}
+
+.pl-4 {
+  padding-left: var(--spacing-four);
+}
+
+.pl-5 {
+  padding-left: var(--spacing-five);
+}
+
+.pl-auto {
+  padding-left: auto;
 }
 

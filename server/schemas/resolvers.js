@@ -13,7 +13,10 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     getDay: async (_, { date }) => {
-      const dayData = await Day.findOne({ date }).populate('customers');
+      const dayData = await Day.findOne({ date }).populate({
+        path: 'customers',
+        populate: { path: 'fromUser', model: 'User' },
+      });
       return dayData;
     },
     getAllDays: async () => {
@@ -28,9 +31,7 @@ const resolvers = {
     },
 
     getCustomer: async (_, { customerId }) => {
-      const customerData = await Customer.findOne({ _id: customerId }).populate(
-        'fromUser'
-      );
+      const customerData = await Customer.findOne({ _id: customerId }).populate('fromUser');
       return customerData;
     },
   },
@@ -46,11 +47,11 @@ const resolvers = {
 
     addCustomer: async (_, args, context) => {
       if (context.user) {
-        const customer = await Customer.create({
+        const createdCustomer = await Customer.create({
           name: args.name,
           fromUser: context.user._id,
         });
-
+        const customer = await Customer.findById(createdCustomer._id).populate('fromUser');
         // Convert the checkInTime to a date-only string
         const checkInDateOnly = new Date(customer.checkInTime);
         checkInDateOnly.setHours(0, 0, 0, 0); // Reset time component
