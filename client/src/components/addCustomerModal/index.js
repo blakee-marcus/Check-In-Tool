@@ -23,7 +23,9 @@ const AddCustomerModal = ({ setModalOpen, setCustomers }) => {
     event.preventDefault();
     try {
       const response = await addCustomer({
-        variables: { name: formState['Customer Name'] },
+        variables: {
+          name: formState['Customer Name'],
+          checkInTime: new Date().toISOString(),  },
       });
 
       const newCustomer = response.data.addCustomer;

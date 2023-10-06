@@ -33,7 +33,7 @@ const typeDefs = gql`
   type Mutation {
     addDay(date: String!): Day!
     addCustomer(
-      name: String!
+      name: String!, date: String
     ): Customer!
     updateCustomer(customerId: ID!, name: String, status: String!): Customer!
     removeCustomer(customerId: ID!): Customer!
