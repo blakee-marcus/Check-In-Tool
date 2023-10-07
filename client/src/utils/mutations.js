@@ -17,8 +17,8 @@ export const UPDATE_CUSTOMER = gql`
 `;
 
 export const ADD_CUSTOMER = gql`
-  mutation AddCustomer($name: String!, $date: String) {
-    addCustomer(name: $name, date: $date) {
+  mutation AddCustomer($name: String!, $checkInTime: String) {
+    addCustomer(name: $name, checkInTime: $checkInTime) {
       _id
       name
       checkInTime

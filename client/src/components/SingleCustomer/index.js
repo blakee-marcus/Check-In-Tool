@@ -1,10 +1,12 @@
 import React from 'react';
 
+import formatTime from '../../utils/formatTime';
+
 const SingleCustomer = ({ customer, handleChange }) => {
   return (
     <div key={customer._id}>
       <p className={`text-${customer.status}`}>
-        {customer.checkInTime.split(', ')[2]}
+        {formatTime(customer.checkInTime)}
       </p>
       <div
         className={`background-${customer.status} text-${customer.status} pl-1 flex-row justify-space-between`}>

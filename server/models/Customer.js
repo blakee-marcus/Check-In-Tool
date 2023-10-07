@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
 const customerSchema = new Schema({
   status: {
@@ -10,8 +9,7 @@ const customerSchema = new Schema({
   },
   checkInTime: {
     type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
+    // default: Date.now,
   },
   name: {
     type: String,

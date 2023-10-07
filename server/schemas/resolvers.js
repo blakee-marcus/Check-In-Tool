@@ -50,7 +50,7 @@ const resolvers = {
         const createdCustomer = await Customer.create({
           name: args.name,
           fromUser: context.user._id,
-          checkInTime: args.date,
+          checkInTime: args.checkInTime,
         });
         const customer = await Customer.findById(createdCustomer._id).populate('fromUser');
         // Convert the checkInTime to a date-only string
