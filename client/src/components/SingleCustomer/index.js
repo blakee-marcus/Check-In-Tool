@@ -1,12 +1,13 @@
 import React from 'react';
 
 import formatTime from '../../utils/formatTime';
+import ElapsedTime from '../elapsedTime';
 
 const SingleCustomer = ({ customer, handleChange }) => {
   return (
     <div key={customer._id}>
       <p className={`text-${customer.status}`}>
-        {formatTime(customer.checkInTime)}
+        {customer.status == 'waiting' ? <ElapsedTime checkInTime={customer.checkInTime} /> : formatTime(customer.checkInTime)}
       </p>
       <div
         className={`background-${customer.status} text-${customer.status} pl-1 flex-row justify-space-between`}>
