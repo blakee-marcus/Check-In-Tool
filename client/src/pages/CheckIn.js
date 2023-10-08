@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 
 import Header from '../components/header';
 import SingleCustomer from '../components/SingleCustomer';
@@ -8,8 +9,10 @@ import AddCustomerModal from '../components/addCustomerModal';
 
 import { QUERY_DAY } from '../utils/queries';
 import { UPDATE_CUSTOMER } from '../utils/mutations';
+import auth from '../utils/auth';
 
 const CheckIn = () => {
+  const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [updateCustomer] = useMutation(UPDATE_CUSTOMER);
@@ -20,9 +23,15 @@ const CheckIn = () => {
   useEffect(() => {
     if (data?.getDay?.customers) {
       setCustomers(data?.getDay?.customers);
-      console.log(data);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (!auth.loggedIn()) {
+      navigate('/login');
+      console.log('not logged in');
+    }
+  }, [navigate]);
 
   const handleChange = (customerId, newStatus) => {
     updateCustomer({

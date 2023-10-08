@@ -46,7 +46,7 @@ const AddCustomerModal = ({ setModalOpen, setCustomers }) => {
         handleChange={handleChange}
         label='Customer Name'
         value={formState[`Customer Name`]}
-        autoComplete='username'
+        autoComplete='name'
       />
       <button className='btn-primary mt-3' type='submit'>
         Submit
