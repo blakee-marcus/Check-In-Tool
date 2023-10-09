@@ -16,7 +16,7 @@ const CheckIn = () => {
   const [customers, setCustomers] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [updateCustomer] = useMutation(UPDATE_CUSTOMER);
-  const { loading, data } = useQuery(QUERY_DAY, {
+  const { loading, data, refetch } = useQuery(QUERY_DAY, {
     variables: { date: `${todaysDate()}, 12:00 am` },
   });
 
@@ -32,6 +32,14 @@ const CheckIn = () => {
       console.log('not logged in');
     }
   }, [navigate]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+    }, 120000);
+
+    return () => clearInterval(interval);
+  }, [refetch]);
 
   const handleChange = (customerId, newStatus) => {
     updateCustomer({
@@ -49,11 +57,22 @@ const CheckIn = () => {
 
   return (
     <section className='m-0 flex-column'>
-      {modalOpen && <AddCustomerModal setModalOpen={setModalOpen} setCustomers={setCustomers} />}
+      {modalOpen && (
+        <AddCustomerModal
+          setModalOpen={setModalOpen}
+          setCustomers={setCustomers}
+        />
+      )}
       <Header />
       <div className='header-secondary sticky px-2 flex-row justify-space-between'>
         {todaysDate()}
-        <button style={{ backgroundColor: 'transparent' }} onClick={() => {setModalOpen(true)}}>+</button>
+        <button
+          style={{ backgroundColor: 'transparent' }}
+          onClick={() => {
+            setModalOpen(true);
+          }}>
+          +
+        </button>
       </div>
       <div className='mx-3 mb-3'>
         {customers &&

@@ -29,7 +29,6 @@ const AddCustomerModal = ({ setModalOpen, setCustomers }) => {
       });
 
       const newCustomer = response.data.addCustomer;
-      console.log(newCustomer);
       setCustomers((prevCustomers) => [...prevCustomers, newCustomer]);
 
       setModalOpen(false);
