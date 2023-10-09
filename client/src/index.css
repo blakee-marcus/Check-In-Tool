@@ -2,7 +2,8 @@
   --primary: hsl(224, 73%, 56%);
   --secondary: hsl(0, 0%, 96%);
   --gray: hsla(0, 1%, 78%, 0.762);
-  --dark: hsl(220, 4%, 13%);
+  /* --dark: hsl(220, 4%, 13%); */
+  --dark: hsl(0, 0%, 0%);
   --error: hsl(0, 100%, 58%);
   --waiting: hsl(357, 100%, 57%);
   --waiting-background: hsla(357, 100%, 57%, 0.2);
