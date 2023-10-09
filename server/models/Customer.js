@@ -4,12 +4,11 @@ const customerSchema = new Schema({
   status: {
     type: String,
     required: true,
-    enum: ['waiting', 'assisting', 'assisted'],
+    enum: ['waiting', 'assisting', 'assisted', 'inspecting'],
     default: 'waiting',
   },
   checkInTime: {
     type: Date,
-    // default: Date.now,
   },
   name: {
     type: String,

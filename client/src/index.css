@@ -7,6 +7,8 @@
   --error: hsl(0, 100%, 58%);
   --waiting: hsl(357, 100%, 57%);
   --waiting-background: hsla(357, 100%, 57%, 0.2);
+  --inspecting: hsl(210, 100%, 57%);
+  --inspecting-background: hsla(210, 100%, 57%, 0.2);
   --assisting: hsl(43, 100%, 58%);
   --assisting-background: hsla(43, 100%, 58%, 0.2);
   --assisted: hsl(154, 59%, 51%);
@@ -98,6 +100,9 @@ li {
 .text-waiting {
   color: var(--waiting);
 }
+.text-inspecting {
+  color: var(--inspecting);
+}
 .text-assisting {
   color: var(--assisting);
 }
@@ -110,6 +115,10 @@ li {
 .background-waiting {
   background-color: var(--waiting-background);
   border-left: 0.125rem solid var(--waiting);
+}
+.background-inspecting {
+  background-color: var(--inspecting-background);
+  border-left: 0.125rem solid var(--inspecting);
 }
 .background-assisting {
   background-color: var(--assisting-background);

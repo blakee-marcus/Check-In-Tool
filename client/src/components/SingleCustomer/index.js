@@ -24,6 +24,7 @@ const SingleCustomer = ({ customer, handleChange }) => {
           value={customer.status}
           onChange={(e) => handleChange(customer._id, e.target.value)}>
           <option value='waiting'>Waiting</option>
+          <option value='inspecting'>Inspecting</option>
           <option value='assisting'>Assisting</option>
           <option value='assisted'>Assisted</option>
         </select>
