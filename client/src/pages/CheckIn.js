@@ -56,7 +56,7 @@ const CheckIn = () => {
   };
 
   return (
-    <section className='m-0 flex-column'>
+    <section className='m-0 flex-column vw-100 vh-100 dark'>
       {modalOpen && (
         <AddCustomerModal
           setModalOpen={setModalOpen}

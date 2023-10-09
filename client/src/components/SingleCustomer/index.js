@@ -7,7 +7,11 @@ const SingleCustomer = ({ customer, handleChange }) => {
   return (
     <div key={customer._id}>
       <p className={`text-${customer.status}`}>
-        {customer.status == 'waiting' ? <ElapsedTime checkInTime={customer.checkInTime} /> : formatTime(customer.checkInTime)}
+        {customer.status == 'waiting' ? (
+          <ElapsedTime checkInTime={customer.checkInTime} />
+        ) : (
+          formatTime(customer.checkInTime)
+        )}
       </p>
       <div
         className={`background-${customer.status} text-${customer.status} pl-1 flex-row justify-space-between`}>
@@ -16,6 +20,7 @@ const SingleCustomer = ({ customer, handleChange }) => {
           <p>by {customer.fromUser.username}</p>
         </div>
         <select
+          className={`text-${customer.status}`}
           value={customer.status}
           onChange={(e) => handleChange(customer._id, e.target.value)}>
           <option value='waiting'>Waiting</option>

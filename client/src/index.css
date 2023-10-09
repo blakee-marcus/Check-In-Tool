@@ -63,7 +63,7 @@ select,
 option {
   font-size: var(--text-primary-size);
   border: none;
-  background-color: hsla(0, 0%, 100%, 0.135);
+  background-color: hsla(0, 0%, 100%, 0);
 }
 h1 {
   font-size: 1.3rem;
@@ -78,7 +78,7 @@ li {
   font-size: var(--text-primary-size);
 }
 .z-index-important {
-  z-index: 100;
+  z-index: 1000 !important;
 }
 .sticky {
   position: sticky;
