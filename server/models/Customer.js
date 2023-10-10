@@ -13,7 +13,7 @@ const customerSchema = new Schema({
   name: {
     type: String,
   },
-  fromUser: {
+  lastTouch: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,

@@ -3,12 +3,14 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_CUSTOMER } from '../../utils/mutations';
 import FormInput from '../formInput';
+import auth from '../../utils/auth';
 
 const AddCustomerModal = ({ setModalOpen, setCustomers }) => {
   const [addCustomer] = useMutation(ADD_CUSTOMER);
   const [formState, setFormState] = useState({
     'Customer Name': '',
   });
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,14 +23,19 @@ const AddCustomerModal = ({ setModalOpen, setCustomers }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(auth.getProfile().data._id);
     try {
       const response = await addCustomer({
         variables: {
           name: formState['Customer Name'],
-          checkInTime: new Date().toISOString(),  },
+          checkInTime: new Date().toISOString(),
+          lastTouch: auth.getProfile().data._id,
+        },
+        
       });
 
       const newCustomer = response.data.addCustomer;
+      console.log(newCustomer);
       setCustomers((prevCustomers) => [...prevCustomers, newCustomer]);
 
       setModalOpen(false);

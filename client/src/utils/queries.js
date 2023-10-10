@@ -7,7 +7,7 @@ export const QUERY_DAY = gql`
       customers {
         _id
         checkInTime
-        fromUser {
+        lastTouch {
           _id
           username
         }

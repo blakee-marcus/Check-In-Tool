@@ -42,16 +42,18 @@ const CheckIn = () => {
   }, [refetch]);
 
   const handleChange = (customerId, newStatus) => {
+    
     updateCustomer({
-      variables: { customerId, status: newStatus },
+      variables: { customerId, status: newStatus, lastTouch: auth.getProfile().data._id },
     });
     // update local state so we don't have to refresh the page
     const updatedCustomers = customers.map((customer) => {
       if (customer._id === customerId) {
-        return { ...customer, status: newStatus };
+        return { ...customer, status: newStatus, lastTouch: auth.getProfile().data.username };
       }
       return customer;
     });
+    console.log(updatedCustomers);
     setCustomers(updatedCustomers);
   };
 

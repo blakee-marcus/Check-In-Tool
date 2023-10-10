@@ -15,7 +15,7 @@ const resolvers = {
     getDay: async (_, { date }) => {
       const dayData = await Day.findOne({ date }).populate({
         path: 'customers',
-        populate: { path: 'fromUser', model: 'User' },
+        populate: { path: 'lastTouch', model: 'User' },
       });
       return dayData;
     },
@@ -23,7 +23,7 @@ const resolvers = {
       const days = await Day.find().populate({
         path: 'customers',
         populate: {
-          path: 'fromUser',
+          path: 'lastTouch',
           model: 'User',
         },
       });
@@ -31,7 +31,9 @@ const resolvers = {
     },
 
     getCustomer: async (_, { customerId }) => {
-      const customerData = await Customer.findOne({ _id: customerId }).populate('fromUser');
+      const customerData = await Customer.findOne({ _id: customerId }).populate(
+        'lastTouch'
+      );
       return customerData;
     },
   },
@@ -49,10 +51,10 @@ const resolvers = {
       if (context.user) {
         const createdCustomer = await Customer.create({
           name: args.name,
-          fromUser: context.user._id,
+          lastTouch: context.user._id,
           checkInTime: args.checkInTime,
         });
-        const customer = await Customer.findById(createdCustomer._id).populate('fromUser');
+        const customer = await Customer.findById(createdCustomer._id).populate('lastTouch');
         // Convert the checkInTime to a date-only string
         const checkInDateOnly = new Date(customer.checkInTime);
         checkInDateOnly.setHours(0, 0, 0, 0); // Reset time component
@@ -71,12 +73,12 @@ const resolvers = {
 
     updateCustomer: async (_, args, context) => {
       if (context.user) {
-        const customer = await Customer.findOneAndUpdate(
+        const createdCustomer = await Customer.findOneAndUpdate(
           { _id: args.customerId },
-          { name: args.name, status: args.status },
+          { name: args.name, status: args.status, lastTouch: context.user._id },
           { new: true },
         );
-
+        const customer = await Customer.findById(createdCustomer._id).populate('lastTouch');
         return customer;
       }
 
@@ -89,7 +91,7 @@ const resolvers = {
 
         await Day.findOneAndUpdate(
           { date: customer.checkInTime },
-          { $pull: { customers: customer._id } },
+          { $pull: { customers: customer._id } }
         );
 
         return customer;

@@ -9,9 +9,13 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_CUSTOMER = gql`
-  mutation UpdateCustomer($customerId: ID!, $status: String!) {
-    updateCustomer(customerId: $customerId, status: $status) {
+  mutation UpdateCustomer($customerId: ID!, $status: String!, $lastTouch: ID) {
+    updateCustomer(customerId: $customerId, status: $status, lastTouch: $lastTouch) {
       status
+      lastTouch {
+        _id
+        username
+      }
     }
   }
 `;
@@ -22,7 +26,7 @@ export const ADD_CUSTOMER = gql`
       _id
       name
       checkInTime
-      fromUser {
+      lastTouch {
         _id
         username
       }

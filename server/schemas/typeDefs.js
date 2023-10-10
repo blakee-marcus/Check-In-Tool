@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String!
     status: String!
     checkInTime: String
-    fromUser: User!
+    lastTouch: User!
   }
 
   type Day {
@@ -32,8 +32,8 @@ const typeDefs = gql`
 
   type Mutation {
     addDay(date: String!): Day!
-    addCustomer(name: String!, checkInTime: String): Customer!
-    updateCustomer(customerId: ID!, name: String, status: String!): Customer!
+    addCustomer(name: String!, checkInTime: String, lastTouch: ID): Customer!
+    updateCustomer(customerId: ID!, name: String, status: String!, lastTouch: ID): Customer!
     removeCustomer(customerId: ID!): Customer!
     login(username: String!, password: String!): Auth
     addUser(username: String!, password: String!): Auth
