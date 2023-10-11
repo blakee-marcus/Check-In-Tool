@@ -23,7 +23,6 @@ const AddCustomerModal = ({ setModalOpen, setCustomers }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(auth.getProfile().data._id);
     try {
       const response = await addCustomer({
         variables: {
@@ -35,7 +34,6 @@ const AddCustomerModal = ({ setModalOpen, setCustomers }) => {
       });
 
       const newCustomer = response.data.addCustomer;
-      console.log(newCustomer);
       setCustomers((prevCustomers) => [...prevCustomers, newCustomer]);
 
       setModalOpen(false);

@@ -11,7 +11,7 @@ A sophisticated React/GraphQL-based application designed specifically for Tesla'
 3. [Usage](#usage)
 4. [Support](#support)
 5. [Contributing](#contributing)
-6. [License](#license)
+6. [Copyright Notice](#copyright)
 
 ## Features
 
@@ -67,7 +67,7 @@ For any issues or queries, please reach out to the team:
 
 We welcome contributions! Please see our [Contribution Guidelines](./ReadMe-Assets/Contributions.md) for more details.
 
-## License
+## Copyright
 
-This project is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.
+All rights reserved. This software and related documentation are copyrighted material, owned by me. Unauthorized copying, distribution, public performance, or display is strictly prohibited without written permission by the author.
 
