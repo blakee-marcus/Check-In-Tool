@@ -54,7 +54,9 @@ const resolvers = {
           lastTouch: context.user._id,
           checkInTime: args.checkInTime,
         });
-        const customer = await Customer.findById(createdCustomer._id).populate('lastTouch');
+        const customer = await Customer.findById(createdCustomer._id).populate(
+          'lastTouch'
+        );
         // Convert the checkInTime to a date-only string
         const checkInDateOnly = new Date(customer.checkInTime);
         checkInDateOnly.setHours(0, 0, 0, 0); // Reset time component
@@ -75,10 +77,17 @@ const resolvers = {
       if (context.user) {
         const createdCustomer = await Customer.findOneAndUpdate(
           { _id: args.customerId },
-          { name: args.name, status: args.status, lastTouch: context.user._id },
-          { new: true },
+          {
+            name: args.name,
+            status: args.status,
+            lastTouch: context.user._id,
+            locationWaiting: args.locationWaiting,
+          },
+          { new: true }
         );
-        const customer = await Customer.findById(createdCustomer._id).populate('lastTouch');
+        const customer = await Customer.findById(createdCustomer._id).populate(
+          'lastTouch'
+        );
         return customer;
       }
 
@@ -145,3 +154,4 @@ const resolvers = {
 };
 
 module.exports = resolvers;
+

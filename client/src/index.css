@@ -369,7 +369,35 @@ li {
 .p-auto {
   padding: auto;
 }
+/* padding-bottom */
 
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.pb-1 {
+  padding-bottom: var(--spacing-one);
+}
+
+.pb-2 {
+  padding-bottom: var(--spacing-two);
+}
+
+.pb-3 {
+  padding-bottom: var(--spacing-three);
+}
+
+.pb-4 {
+  padding-bottom: var(--spacing-four);
+}
+
+.pb-5 {
+  padding-bottom: var(--spacing-five);
+}
+
+.pb-auto {
+  padding-bottom: auto;
+}
 /* Padding - y axis */
 
 .py-0 {

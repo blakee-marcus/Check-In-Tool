@@ -7,6 +7,11 @@ const customerSchema = new Schema({
     enum: ['waiting', 'assisting', 'assisted', 'inspecting'],
     default: 'waiting',
   },
+  locationWaiting: {
+    type: String,
+    enum: ['edu station', 'showroom'],
+    default: 'showroom',
+  },
   checkInTime: {
     type: Date,
   },
