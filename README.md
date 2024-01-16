@@ -1,6 +1,6 @@
 # Check-In-Tool 🚗
 
-A sophisticated React/GraphQL-based application designed for 0.on-site team to efficiently manage and monitor queues at check-in desks. Built using the MERN (MongoDB, Express.js, React, Node.js) stack for optimal performance and scalability.
+A sophisticated React/GraphQL-based application designed for on-site teams to efficiently manage and monitor queues at check-in desks. Built using the MERN (MongoDB, Express.js, React, Node.js) stack for optimal performance and scalability.
 
 ![Tesla Check-In-Tool Screenshot](./ReadMe-Assets/screenshot.PNG)
 
